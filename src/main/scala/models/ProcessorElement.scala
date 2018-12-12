@@ -2,7 +2,7 @@ package models
 
 import java.util.concurrent.atomic.AtomicReference
 
-case class ProcessorElement(name: String, power: Int, max: Int) extends BaseElement {
+case class ProcessorElement(name: String, power: Int, max: Int, prob: Float) extends BaseElement {
   var currentPowerLevel: Int = power
 
   private val restoredBy: AtomicReference[ProcessorElement] = new AtomicReference[ProcessorElement](null)

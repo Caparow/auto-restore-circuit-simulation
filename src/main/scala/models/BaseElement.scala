@@ -5,6 +5,16 @@ import java.util.concurrent.atomic.AtomicBoolean
 trait BaseElement {
   private val state: AtomicBoolean = new AtomicBoolean(true)
 
+  def prob: Float
+
+  def calculateProb: Float = {
+    if (isAlive)  {
+      1.toFloat - prob
+    } else {
+      prob
+    }
+  }
+
   def restoreInitial(): Unit = {}
 
   def isAlive: Boolean = state.get()

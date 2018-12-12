@@ -8,39 +8,39 @@ object main extends App {
     */
 
   // P - processors
-  val p1 = ProcessorElement("Pr-1", 40, 80)
-  val p2 = ProcessorElement("Pr-2", 60, 100)
-  val p3 = ProcessorElement("Pr-3", 20, 60)
-  val p5 = ProcessorElement("Pr-5", 50, 100)
-  val p6 = ProcessorElement("Pr-6", 30, 70)
+  val p1 = ProcessorElement("Pr-1", 40, 80, (1.2*0.0001).toFloat)
+  val p2 = ProcessorElement("Pr-2", 60, 100, (1.2*0.0001).toFloat)
+  val p3 = ProcessorElement("Pr-3", 20, 60, (1.2*0.0001).toFloat)
+  val p5 = ProcessorElement("Pr-5", 50, 100, (1.2*0.0001).toFloat)
+  val p6 = ProcessorElement("Pr-6", 30, 70, (1.2*0.0001).toFloat)
 
   // A - elements
-  val a1 = Element("A-1")
-  val a2 = Element("A-2")
+  val a1 = Element("A-1", (1.2*0.0001).toFloat)
+  val a2 = Element("A-2", (1.2*0.0001).toFloat)
 
   // B - buses
-  val b1 = Element("B-1")
-  val b2 = Element("B-2")
-  val b4 = Element("B-4")
-  val b5 = Element("B-5")
+  val b1 = Element("B-1", (1.5*0.00001).toFloat)
+  val b2 = Element("B-2", (1.5*0.00001).toFloat)
+  val b4 = Element("B-4", (1.5*0.00001).toFloat)
+  val b5 = Element("B-5", (1.5*0.00001).toFloat)
 
   // C - elements
-  val c1 = Element("C-1")
-  val c2 = Element("C-2")
-  val c4 = Element("C-4")
-  val c5 = Element("C-5")
-  val c6 = Element("C-6")
+  val c1 = Element("C-1", (4.1*0.0001).toFloat)
+  val c2 = Element("C-2", (4.1*0.0001).toFloat)
+  val c4 = Element("C-4", (4.1*0.0001).toFloat)
+  val c5 = Element("C-5", (4.1*0.0001).toFloat)
+  val c6 = Element("C-6", (4.1*0.0001).toFloat)
 
   // D - elements
-  val d1 = Element("D-1")
-  val d2 = Element("D-2")
-  val d3 = Element("D-3")
-  val d6 = Element("D-6")
-  val d8 = Element("D-8")
+  val d1 = Element("D-1", (2.2*0.00001).toFloat)
+  val d2 = Element("D-2", (2.2*0.00001).toFloat)
+  val d3 = Element("D-3", (2.2*0.00001).toFloat)
+  val d6 = Element("D-6", (2.2*0.00001).toFloat)
+  val d8 = Element("D-8", (2.2*0.00001).toFloat)
 
   // M - bridges
-  val m1 = Element("M-1")
-  val m2 = Element("M-2")
+  val m1 = Element("M-1", (3.6*0.0001).toFloat)
+  val m2 = Element("M-2", (3.6*0.0001).toFloat)
 
   val all = List(p1, p2, p3, p5, p6, a1, a2, b1, b2, b4, b5, c1, c2, c4, c5, c6, d1, d2, d3, d6, d8, m1, m2)
 
@@ -98,8 +98,10 @@ object main extends App {
     * 9 - write results into document, but remember YOU NEW CIRCUIT MUST HAVE LOVER FAILURE LEVEL THEN BASE CIRCUIT !!!
     *     in other case failed not elements - but you :c
     */
-  simulation.performSimulation(1, 100)
-  simulation.performSimulation(2, 100)
-  simulation.performSimulation(3, 50)
-  simulation.performSimulation(4, 10)
+  val prob1 = simulation.performSimulation(1, 100)
+  val prob2 = simulation.performSimulation(2, 100)
+  val prob3 = simulation.performSimulation(3, 50)
+  val prob4 = simulation.performSimulation(4, 10)
+
+  println(s"\n\n\nProbability of successful work: ${prob1 + prob2 + prob3 + prob4} ")
 }
